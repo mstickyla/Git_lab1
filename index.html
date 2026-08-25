@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kyla Feliciano | Student Developer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #08080d;
+      --card: #11111a;
+      --purple: #a855f7;
+      --pink: #ec4899;
+      --text: #f5f3ff;
+      --muted: #aaa6b8;
+      --border: rgba(255,255,255,.08);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8,8,13,.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--purple);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    section {
+      padding: 100px 8%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      max-width: 750px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid rgba(168,85,247,.4);
+      border-radius: 50px;
+      color: #c084fc;
+      margin-bottom: 20px;
+      background: rgba(168,85,247,.08);
+    }
+
+    h1 {
+      font-size: clamp(50px, 9vw, 90px);
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 20px;
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .primary {
+      color: white;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+    }
+
+    .secondary {
+      color: white;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      right: -150px;
+      top: 20%;
+      background: var(--purple);
+      filter: blur(180px);
+      opacity: .2;
+    }
+
+    .section-title {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .terminal {
+      background: #0d0d14;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 25px;
+      font-family: monospace;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+
+    .terminal span {
+      color: #c084fc;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 16px;
+      transition: .3s;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      border-color: rgba(168,85,247,.5);
+    }
+
+    .project h3 {
+      margin: 15px 0 10px;
+    }
+
+    .project p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tech span {
+      padding: 5px 9px;
+      font-size: 12px;
+      border-radius: 6px;
+      background: rgba(168,85,247,.1);
+      color: #c084fc;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .skill {
+      padding: 15px 22px;
+      border-radius: 10px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 550px;
+      margin: 0 auto 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    @media (max-width: 800px) {
+      nav ul {
+        display: none;
+      }
+
+      .about,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+
+      h1 {
+        font-size: 55px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">KF.</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home">
+    <div class="glow"></div>
+
+    <div class="hero">
+      <div class="tag">👋 Hello, I'm Kyla</div>
+
+      <h1>
+        Student.<br>
+        <span class="gradient">Developer.</span>
+      </h1>
+
+      <p>
+        I'm Kyla Feliciano, a student passionate about technology,
+        programming, and creating useful things with code.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="btn primary">View Projects →</a>
+        <a href="https://github.com/" class="btn secondary" target="_blank">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about">
+      <div>
+        <h2 class="section-title">About Me</h2>
+        <p>
+          I'm a student currently exploring the world of software
+          development. I enjoy learning new technologies, experimenting
+          with ideas, and building projects that help me grow as a developer.
+        </p>
+        <br>
+        <p>
+          My goal is simple: keep learning, keep building, and become
+          better with every project.
+        </p>
+      </div>
+
+      <div class="terminal">
+        <p><span>kyla@github</span>:~$ whoami</p>
+        <p>Student Developer</p>
+        <br>
+        <p><span>kyla@github</span>:~$ location</p>
+        <p>Philippines 🇵🇭</p>
+        <br>
+        <p><span>kyla@github</span>:~$ passion</p>
+        <p>Code + Creativity ✨</p>
+        <br>
+        <p><span>kyla@github</span>:~$ status</p>
+        <p>Learning... ██████████ 100%</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">
+      A few projects I created while learning and experimenting.
+    </p>
+
+    <div class="projects">
+
+      <div class="project">
+        <div style="font-size:35px;">🌐</div>
+        <h3>Student Portfolio</h3>
+        <p>
+          A responsive personal portfolio website for showcasing
+          skills, projects, and achievements.
+        </p>
+        <div class="tech">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div style="font-size:35px;">📚</div>
+        <h3>Study Buddy</h3>
+        <p>
+          A simple productivity app designed to help students
+          organize assignments and study tasks.
+        </p>
+        <div class="tech">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div style="font-size:35px;">☁️</div>
+        <h3>Weather App</h3>
+        <p>
+          A clean weather application that displays current
+          weather information using an API.
+        </p>
+        <div class="tech">
+          <span>JavaScript</span>
+          <span>API</span>
+          <span>CSS</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-subtitle">Technologies I'm learning and using.</p>
+
+    <div class="skills">
+      <div class="skill">🌐 HTML</div>
+      <div class="skill">🎨 CSS</div>
+      <div class="skill">⚡ JavaScript</div>
+      <div class="skill">🐍 Python</div>
+      <div class="skill">🔧 Git</div>
+      <div class="skill">🐙 GitHub</div>
+      <div class="skill">💻 VS Code</div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Let's Connect</h2>
+    <p>
+      Thanks for visiting my portfolio! I'm always learning,
+      building, and looking for new ideas to explore.
+    </p>
+
+    <div class="buttons" style="justify-content:center;">
+      <a
+        href="https://github.com/"
+        target="_blank"
+        class="btn primary"
+      >
+        Visit My GitHub
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Kyla Feliciano · Built with curiosity & code 💜
+  </footer>
+
+</body>
+</html>
